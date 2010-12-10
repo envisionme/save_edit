@@ -144,7 +144,7 @@ function save_edit_form_alter(&$form, $form_state, $form_id) {
     $form['buttons']['save_edit'] = array(
       '#type' => 'submit',
       '#access' => user_access('use save and edit'),
-      '#value' => t(variable_get('save_edit_button_value', 'Save & Edit')),
+      '#value' => t(check_plain(variable_get('save_edit_button_value', 'Save and Edit'))),
       '#weight' => variable_get('save_edit_button_weight', 4),
       '#submit' => array('redirect_save_edit_submit'),
     );
@@ -154,7 +154,7 @@ function save_edit_form_alter(&$form, $form_state, $form_id) {
 	    $form['buttons']['save_edit_publish'] = array(
 	      '#type' => 'submit',
 	      '#access' => user_access('use save and edit'),
-	      '#value' => t(variable_get('save_edit_publish_button_value', 'Save & Publish')),
+	      '#value' => t(check_plain(variable_get('save_edit_publish_button_value', 'Save and Publish'))),
 	      '#weight' => variable_get('save_edit_publish_button_weight', 7),
 	      '#submit' => array('redirect_save_edit_submit'),
 	    );
@@ -164,7 +164,7 @@ function save_edit_form_alter(&$form, $form_state, $form_id) {
     $form['buttons']['submit'] = array(
 	    '#type' => 'submit',
 	    '#access' => !variable_get('node_preview', 0) || (!form_get_errors() && isset($form_state['node_preview'])),
-	    '#value' => t(variable_get('save_edit_default_save_button_value', 'Save')),
+	    '#value' => t(check_plain(variable_get('save_edit_default_save_button_value', 'Save'))),
 	    '#weight' => variable_get('save_edit_default_save_button_weight', 5),
 	    '#submit' => array('node_form_submit'),
 	  );
