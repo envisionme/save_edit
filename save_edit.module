@@ -137,6 +137,9 @@ function save_edit_admin_settings() {
  */
 function save_edit_form_alter(&$form, $form_state, $form_id) {
 	$node_types = variable_get('save_edit_node_types', array());
+  if (!isset($form['type']['#value'])) {
+    return;
+  }
 	$form_type = $form['type']['#value'];
   if ($form['#id'] == 'node-form' && $node_types[$form_type] && user_access('use save and edit')) {
     //add save and edit btn
